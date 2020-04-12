@@ -31,7 +31,7 @@ public abstract class AbstractPageBase {
     }
 
 
-    public String getCurrentUserName(){
+    public String getCurrentUserName() {
         BrowserUtilities.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(currentUser));
         return currentUser.getText().trim();
@@ -40,7 +40,8 @@ public abstract class AbstractPageBase {
 
     /**
      * Method for vytrack navigation. Provide tab name and module name to navigate
-     * @param tabName, like Dashboards, Fleet or Customers
+     *
+     * @param tabName,    like Dashboards, Fleet or Customers
      * @param moduleName, like Vehicles, Vehicles Odometer and Vehicles Costs
      */
     public void navigateTo(String tabName, String moduleName) {
@@ -61,5 +62,7 @@ public abstract class AbstractPageBase {
 
         //increase this wait rime if still failing
         BrowserUtilities.wait(4);
+
     }
+
 }
