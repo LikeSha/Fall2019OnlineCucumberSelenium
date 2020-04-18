@@ -50,9 +50,9 @@ public class CalendarEventsPage extends AbstractPageBase {
     private WebElement generalInfoDescription;
 
     public void enterCalendarEventTitle(String titleValue) {
-        BrowserUtilities.wait(5);
         BrowserUtilities.waitForPageToLoad(20);
         wait.until(ExpectedConditions.visibilityOf(title)).sendKeys(titleValue);
+        wait.until((ExpectedConditions.attributeToBe(title,"value",titleValue)));
     }
 
     public void enterCalendarEventDescription(String description) {
@@ -61,6 +61,7 @@ public class CalendarEventsPage extends AbstractPageBase {
         //wait until frame is available and switch to it
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(descriptionFrame));
         descriptionTextArea.sendKeys(description);
+        wait.until(ExpectedConditions.textToBePresentInElement(descriptionTextArea,description));
         driver.switchTo().defaultContent();//exit from the frame
     }
 
