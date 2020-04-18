@@ -54,4 +54,9 @@ public class LoginStepDefinitions {
 
     }
 
+    @When("user navigates to {string} and {string}")
+    public void user_navigates_to_and(String tab, String module) {
+        loginPage
+    }
+
 }
