@@ -32,6 +32,7 @@ public class Hooks {
         if(scenario.isFailed()){
             TakesScreenshot takeScreenshot = (TakesScreenshot) Driver.getDriver();
             byte[] image = takeScreenshot.getScreenshotAs(OutputType.BYTES);
+            //attach screenshot to the report
             scenario.embed(image,"image/png",scenario.getName());
         }
         System.out.println("Test clean up");
