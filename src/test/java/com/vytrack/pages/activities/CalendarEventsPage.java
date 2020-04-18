@@ -50,11 +50,14 @@ public class CalendarEventsPage extends AbstractPageBase {
     private WebElement generalInfoDescription;
 
     public void enterCalendarEventTitle(String titleValue) {
+        BrowserUtilities.wait(5);
         BrowserUtilities.waitForPageToLoad(20);
         wait.until(ExpectedConditions.visibilityOf(title)).sendKeys(titleValue);
     }
 
     public void enterCalendarEventDescription(String description) {
+        BrowserUtilities.wait(5);
+        BrowserUtilities.waitForPageToLoad(20);
         //wait until frame is available and switch to it
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(descriptionFrame));
         descriptionTextArea.sendKeys(description);
