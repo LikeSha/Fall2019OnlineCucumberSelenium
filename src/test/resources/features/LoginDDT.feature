@@ -1,3 +1,4 @@
+@scenario_outline_2
 Feature: Login tests with Scenario Outline
 
   Scenario Outline: Go to <module> and verify title: <title>
@@ -25,4 +26,4 @@ Feature: Login tests with Scenario Outline
       | store manager | Customers  | Accounts        | All - Accounts - Customers                                         |
       | store manager | Customers  | Contacts        | All - Contacts - Customers                                         |
       | store manager | Activities | Calendar Events | All - Calendar Events - Activities                                 |
-      | store manager | System     | Jobs            | All - Jobs - System
+      | store manager | System     | Jobs            | All - Jobs - System                                                |
