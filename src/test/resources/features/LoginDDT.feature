@@ -1,10 +1,11 @@
 Feature: Login tests with Scenario Outline
 
-  Scenario Outline: page titles with different users
+  Scenario Outline: Go to <module> and verify title: <title>
     Given user is on the login page
     When user logs in as "<user_type>"
     And user navigates to "<tab>" and "<module>"
     Then user verifies that page title is "<title>"
+
     Examples:
       | user_type     | tab        | module          | title                                                              |
       | driver        | Fleet      | Vehicles        | Car - Entities - System - Car - Entities - System                  |
