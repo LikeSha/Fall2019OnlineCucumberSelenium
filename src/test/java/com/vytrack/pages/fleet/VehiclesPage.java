@@ -44,7 +44,7 @@ public class VehiclesPage extends AbstractPageBase {
 
     public void setLocationInput(String location) {
         locationInput.sendKeys(location);
-        wait.until(ExpectedConditions.attributeToBe(locationInput,"value",location));
+       // wait.until(ExpectedConditions.attributeToBe(locationInput,"value",location));
     }
 
     public void setModelYear(String year) {
