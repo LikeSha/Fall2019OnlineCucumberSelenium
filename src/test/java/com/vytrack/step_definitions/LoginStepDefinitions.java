@@ -15,12 +15,12 @@ public class LoginStepDefinitions {
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
         System.out.println("Open login page");
-        // -Denv=qa1, -denv=qa2, -Denv=qa3
+        // -Denv=qa1, -Denv=qa2, -Denv=qa3
         String env = "qa2";
-        if(System.getProperty("browser")!=null){
+        if (System.getProperty("env") != null) {
             env = System.getProperty("env");
         }
-        String URL = ConfigurationReader.getProperty("env");
+        String URL = ConfigurationReader.getProperty(env);
         System.out.println("URL :: " + URL);
         Driver.getDriver().get(URL);
     }
