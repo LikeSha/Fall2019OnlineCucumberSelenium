@@ -56,7 +56,10 @@ public class Driver {
                     break;
                 case "chrome-remote":
                     try{
-                        URL url = new URL("http://54.224.89.23:4444/wd/hub");
+                        //we create object of URL and specify
+                        //selenium grid hub as a parameter
+                        //make sure it ends with /wd/hub
+                        URL url = new URL("http://34.236.36.95:4444/wd/hub");
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                         desiredCapabilities.setBrowserName(BrowserType.CHROME);
                         desiredCapabilities.setPlatform(Platform.ANY);
