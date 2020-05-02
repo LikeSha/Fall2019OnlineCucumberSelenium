@@ -30,7 +30,7 @@ mvn test -Denv=qa2
 
 To run regression on qa1 and chrome browser:
 
-clean test -Dbrowser=firefox -Denv=qa1 -P Regression
+clean test -Dbrowser=chrome -Denv=qa1 -P Regression
 
 NOTE : add mvn before every command if you are not running it on Jenkins:
 
