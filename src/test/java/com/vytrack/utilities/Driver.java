@@ -1,6 +1,7 @@
 package com.vytrack.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -58,6 +59,8 @@ public class Driver {
                         URL url = new URL("http://54.224.89.23:4444/wd/hub");
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                         desiredCapabilities.setBrowserName(BrowserType.CHROME);
+                        desiredCapabilities.setPlatform(Platform.ANY);
+
                         driverPool.set(new RemoteWebDriver(url,desiredCapabilities));
                     }catch(MalformedURLException e){
                         e.printStackTrace();
