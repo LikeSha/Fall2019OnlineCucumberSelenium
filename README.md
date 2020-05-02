@@ -19,3 +19,19 @@ To run feature files in parallel without limiting number of threads:
 <includes>
   <include>**/RegressionRunner.java</include>
 </includes>
+
+To specify browser type, use parameter -Dbrowser=browserType:
+
+clean test -Dbrwoser=firefox
+
+To specify environment,use parameter -Denv=envType
+
+mvn test -Denv=qa2
+
+To run regression on qa1 and chrome browser:
+
+clean test -Dbrowser=firefox -Denv=qa1 -P Regression
+
+NOTE : add mvn before every command if you are not running it on Jenkins:
+
+mvn test -Dbrowser=firefox -Denv=qa2 -P Regression
