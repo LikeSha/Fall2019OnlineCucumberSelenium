@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         strict = false,
         tags = "@sales_manager",
         plugin = {
-                "html:target/default-report",
+                "html:target/default-report",// plugin= "html:target/cucumber-html-report"
                 "json:target/cucumber1.json",
                 "rerun:target/rerun.txt"
         }
