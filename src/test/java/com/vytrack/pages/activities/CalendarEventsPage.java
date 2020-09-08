@@ -52,6 +52,7 @@ public class CalendarEventsPage extends AbstractPageBase {
 
     @FindBy(xpath = "//*[contains(text(),'View per page:')]/following-sibling::*//a")
     private List<WebElement> viewPerPageElements;
+    //    //* selects all elements in a document, regardless of name
 
 
     @FindBy(css = "button[class*='btn dropdown-toggle']")

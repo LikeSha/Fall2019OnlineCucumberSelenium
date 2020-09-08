@@ -16,5 +16,12 @@ public class ViewCalendarEventsStepDefinitions {
         Assert.assertEquals(dataTable,calendarEventsPage.getViewPerPageOptions());
     }
 
+    /*
+     depend on size of data ,we can use proper data structure
+     if it is only one column ,we can use List
+     if it is two columns , we can use Map or List of Map
+     if it is more than two columns, we can use List of Maps.
+     */
+
 
 }
