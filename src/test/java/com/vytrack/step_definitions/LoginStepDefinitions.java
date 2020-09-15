@@ -72,7 +72,8 @@ public class LoginStepDefinitions {
     }
 
     @When("user logs in as {string}")
-    public void user_logs_in_as(String userType) {
+    public void user_logs_in_as(String userType) {//we can change the parameter to "role", "userType".
+                                            //default is "string"-->public void user_logs_in_as(String string)
        loginPage.login(userType);
 
     }
