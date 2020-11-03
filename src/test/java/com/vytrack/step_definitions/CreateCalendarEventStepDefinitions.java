@@ -56,7 +56,7 @@ public class CreateCalendarEventStepDefinitions {
     public void user_verifies_new_calendar_event_was_created_successfully(Map<String, String> dataTable) {
         Assert.assertEquals(dataTable.get("description"),calendarEventsPage.getGeneralInfoDescriptionText());
         Assert.assertEquals(dataTable.get("title"),calendarEventsPage.getGeneralInfoTitleText());
-        // Expected data stored in the feature file , but actual data in the UI
+        // Expected data stored in the feature file , but actual data in the UI, actual result is in the database
     }
 
 }
