@@ -19,7 +19,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     @FindBy(className = "select2-chosen")
     private WebElement owner;
 
-    @FindBy(css = "[id^='date_selector_oro_calendar_event_form_start']")
+    @FindBy(css = "[id^='date_selector_oro_calendar_event_form_start']")// Attribute Starts Selector:id^=
     private WebElement startDate;
 
     @FindBy(css = "[id^='time_selector_oro_calendar_event_form_start']")
