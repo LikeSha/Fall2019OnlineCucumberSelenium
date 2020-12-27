@@ -22,7 +22,13 @@ public class CreateCarStepDefinitions {
     @Then("user creates a car with following info:")
     public void user_creates_a_car_with_following_info(List<Map<String, String>> dataTable) {
         System.out.println(dataTable);
-        vehiclesPage.setLicencePlateInput(dataTable.get(0).get("License Plate"));
+        vehiclesPage.setLicencePlateInput(dataTable.get(0).get("License Plate"));// read values based on key names
+        /*
+        | License Plate | Driver    | Location | Model Year | Color |
+        | SDET          | Pro Racer | London   | 2020       | Red   | <-- this is the first row = index 0 =
+         dataTable.get(0). get("License Plate") then based on the column name ,we get value. in this case
+         the column names are : License Plate, Driver, Location,Model Year, Color
+         */
 
         vehiclesPage.setDriverInput(dataTable.get(0).get("Driver"));
 
