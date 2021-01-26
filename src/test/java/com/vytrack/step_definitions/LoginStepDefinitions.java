@@ -56,7 +56,11 @@ public class LoginStepDefinitions {
     @When("user enters {string} username and {string} password")
     public void user_enters_username_and_password(String string, String string2) {
         System.out.printf("Login with user name %s and %s password\n", string, string2);
-        loginPage.login(string,string2);
+        loginPage.login(string,string2);//the %s is a 'format character',
+        // indicating "insert a string here".
+        // The extra parameters after the string in your two function calls
+        // are the values to fill into the format character placeholders:
+        // In the first example, %s will be replaced with the contents of the command variable.
 
     }
 
