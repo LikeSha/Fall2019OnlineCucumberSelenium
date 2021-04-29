@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/activities",
         dryRun = false,
         strict = false,
-        tags = "",
+        tags = "", //  to run all tests in cucumber runner class, we can just set tags=""
         plugin = {
                 "html:target/default-report",
                 "json:target/cucumber2.json"
