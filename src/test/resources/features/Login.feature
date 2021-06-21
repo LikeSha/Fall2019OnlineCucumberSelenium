@@ -6,6 +6,10 @@ Feature: Login
 #  Test Method = Test Case = Scenario
 #  Test + DataProvider = Scenario Outline + Examples table
 
+  # Scenario Outline in Cucumber = DataProvider in testNG
+
+# Background just like BeforeMethod() in testNG
+
   Background: open login page
     Given user is on the login page
 
