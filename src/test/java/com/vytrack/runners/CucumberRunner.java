@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = "com/vytrack/step_definitions",
-        features = "src/test/resources",
+        glue = "com/vytrack/step_definitions",//right click step_definitions package-->copy path-->path from Source Root
+        features = "src/test/resources",//right click feature package-->copy path-->Path From Content Root
         dryRun = false,
         strict = false,
         tags = "@sales_manager",
