@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources",//right click feature package-->copy path-->Path From Content Root
         dryRun = false,
         strict = false,
-        tags = "@sales_manager",
+        tags = "@sales_manager",// we can also say tags = "not @ driver"--> run everything except driver tag
         plugin = {
                 "html:target/default-report",// plugin= "html:target/cucumber-html-report"
                 "json:target/cucumber1.json",
@@ -310,6 +310,206 @@ and write our own codes inside ,
 
 
 
+Today is April 15, 2020
+    Agenda:
+        Cucumber BDD recap
+        dryRun recap
+        tags
+        hooks (before and after hooks)
+######################################
+
+    BDD - behavior driven development,
+    methodology that is used to write requirement documents from end-user perspective.
+    SO business (BAs, POs, Devs and Testers) can seat together and
+     discuss requirements that are written in the plain text.
+
+    BDD helps to fill the gap between business and technical teams.
+
+    Business requirements will be written as a user story.
+    Every story starts like: As user, I want to be able to....
+    User story contains acceptance criteria and it defines how feature should behave.
+    Basically, what feature should be able to do and what not.
+
+    We as testers, develop test automation scripts based on user story acceptance criteria.
+
+    What are the steps:
+
+        1. Read and analyze user story. If needed, ask questions during grooming sessions.
+        Or, we can ask questions any time, not only during the meetings.
+
+        2. Write feature file/files with test scenarios.
+
+        3. Dry run - to generate step definitions.
+
+        4. Place step definition methods into step definition classes.
+
+        5. Allocate all required web elements and develop required methods
+        for interaction with those elements.
+
+        6. Create page objects in the step definition classes and use them
+        to provide code implementation for every test step. Every step (phrase) defines it's behavior.
+
+        7. When everything is done, generate HTML report and push the code to github,
+        from your branch, and create a pull request for code review.
+
+        8. When review is completed, you can move your task from in progress/review to done column
+        in Jira board.
+
+How do we implement BDD in test automation?
+    We use Cucumber BDD.
+    For test cases, we create .feature files. Every feature file consists of test scenarios.
+    Every test scenario consists of test steps. Every test step has to start with gherkin keyword:
+    -Given
+    -When
+    -Then
+    -And
+    -But
+
+    Also, feature has a description:
+
+    Feature: Create a car
+            As user, I want to be able to add new cars.
+    Scenario: 1. Add some car
+        Given user is on the login page
+
+Cucumber BDD book: https://www.amazon.com/Cucumber-Java-Book-Behaviour-Driven-Development-ebook/dp/B00V20IEXM/ref=sr_1_3?dchild=1&keywords=cucumber+bdd&qid=1586993955&sr=8-3
+
+Then, composition of cucumber framework:
+    pages               page classes
+    runners             cucumber test runners. We need them to execute feature files
+
+        @RunWith(Cucumber.class)
+        @CucumberOptions(
+           glue = "com/vytrack/step_definitions",      path to step definitions
+           features = "src/test/resources/features", path to the folder with feature files
+           dryRun = false,  true - to generate unimplemented step definitions before real test execution.
+           strict = true - enforce step definition implementation
+                )
+
+           public class CucumberRunner {
+
+                }
+                You can also specify path to only one specific feature file:
+                features = "src/test/resources/features/Login.feature",
+                Or, path yo group of feature files:
+                features = {
+                            "src/test/resources/features/Login.feature",
+                            "src/test/resources/features/CreateCar.feature"
+                            }
+                This approach is useful for minor regression. When you need to test not entire system,
+                just some component or couple of them.
+
+    step_defintions
+         simple java classes, where we keep code implementation of test steps.
+
+          //Login.feature file
+         @When("user logs in as a sales manager")       -> When user logs in as a sales manager
+         public void user_logs_in_as_a_sales_manager() {
+            System.out.println("Login as sales manager");
+            loginPage.login("salesmanager110", "UserUser123");
+         }
+         based on the description on top of the method,
+         cucumber links step definitions with test steps in feature file.
+    utilities
+            reusable code
+    features
+            .feature
+
+What if we want to run specific scenario?
+    for this, we can use tags.
+  @driver
+  Scenario: Login as driver and verify that title is a Dashboard
+    Given user is on the login page
+    When user logs in as a driver
+    Then user should verify that title is a Dashboard
+
+  @driver - it's a tag.
+
+we use tags to run specific scenarios and ignore others.
+Or opposite, ignore specific scenarios and run others.
+
+@CucumberOptions(
+        tags = "@driver"   <--- to run scenarios that have this tag only.
+)
+tags = "not @driver" - run everything, except scenarios that have this tag.
+
+In old cucumber version, it was like this:
+    tags = "~@driver"
+
+tags = "@driver"     - run scenarios only with this tag
+strict - true - to mark unimplemented step definitions as errors.
+To run scenarios, that have either or tags.
+    tags = "@sales_manager or @driver"
+To run scenarios, that have both tags
+    tags = "@sales_manager and @driver"
+failed to parse feature file means that syntax in feature file is wrong.
+tags for specific setup
+application version where this feature is present
+tag with bug number, @know_issue @BUG_VYT4311. To label scenarios with known bugs.
+@know_issue
+tags = "not @know_issue"
+To quickly verify that all bugs were fixed, run scenarios with the tag:
+tags = "@know_issue"
+It will work only if you previously labled scenarios that were reported as a bug.
+#######################
+In TestNG, we used @BeforeMethod and @AfterMethod to execute some code before and after every test scenario.
+In cucumber, we have hooks for exactly same purpose.
+
+How to create a hook?
+it's just a public void method with @Before or @After annotations.
+@Before hook - runs automatically BEFORE every test scenario.
+@After  hook - runs automatically AFTER every test scenario.
+
+What do we put into @Before hook ?
+    some code to setup a connections (api, db, ssh, etc..), maximize window, etc...
+
+What do we put into @After hook?
+    some code to close connections, close browser, etc...
+    also, to take a screenshot in case of test failure.
+
+Where do we store hooks?
+    We usually keep under step_definitions package. We can crate a separate class that calls Hooks
+package com.vytrack.step_definitions;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+public class Hooks {
+    @Before
+    public void setup(){
+        System.out.println("Test setup");
+    }
+    @After
+    public void tearDown(){
+        System.out.println("Test clean up");
+    }
+}
+plugin = "html:target/cucumber-html-report" - will generate cucumber HTML report
+mvn dependency:tree - download all dependencies.
+    @Before("@driver")
+    public void specialSetup(){
+        System.out.println("Setup for driver only");
+    }
+    @After("@driver")
+    public void specialTearDown(){
+        System.out.println("Tear down for driver only");
+    }
+
+We can create hooks that will be running only for specific scenarios, based on tags
+Hook without any tags will still executed for every single scenario.
+
+We can change order of hooks priority
+    @Before(order = 2)
+    public void setup(){
+        System.out.println("Test setup");
+        Driver.getDriver().manage().window().maximize();
+    }
+    @Before(value = "@driver", order = 1)
+    public void specialSetup(){
+        System.out.println("Setup for driver only");
+    }
+Lower number - higher priority.
+cucumber is not autonomous. it has to work along with junit or testng.
+Like in any car there is an engine and transmission
+(except electric cars, I know someone will tell me this).
 
 
  */
