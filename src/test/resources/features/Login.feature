@@ -8,7 +8,9 @@ Feature: Login
 
   # Scenario Outline in Cucumber = DataProvider in testNG
 
-# Background just like BeforeMethod() in testNG
+# BeforeMethod() in testNG. In cucumber, hooks for exactly same purpose.
+  #@Before hook --runs automatically before every test scenario
+  #@After hook - runs automatically AFTER every test scenario
 
   Background: open login page
     Given user is on the login page
