@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         dryRun = false,
         strict = false,
         tags = "@sales_manager",// we can also say tags = "not @ driver"--> run everything except driver tag
-        plugin = {
+        plugin = {            // tags = "@sales_manager" or @driver" we running both of them
                 "html:target/default-report",// plugin= "html:target/cucumber-html-report"
                 "json:target/cucumber1.json",
                 "rerun:target/rerun.txt"
