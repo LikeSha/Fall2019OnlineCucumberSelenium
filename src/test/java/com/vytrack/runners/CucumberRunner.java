@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
         }
 
 ) // If you want to generate report ,you have to remove all tags ,set like this :tags="",
+// report is inside target folder
 public class CucumberRunner {
 
 
