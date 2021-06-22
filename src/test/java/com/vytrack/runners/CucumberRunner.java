@@ -30,6 +30,8 @@ April 11 ,2020
 
 April 12 ---Holiday , no class
 
+Cucumber itself doesn't run test ,it run with JUnit or testNG, it has to be on top of JUnit or testNG engine
+
 Tuesday--review excel + writing data into excel file.
 
    Agenda :
