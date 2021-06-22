@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt"
         }
 
-)
+) // If you want to generate report ,you have to remove all tags ,set like this :tags="",
 public class CucumberRunner {
 
 
