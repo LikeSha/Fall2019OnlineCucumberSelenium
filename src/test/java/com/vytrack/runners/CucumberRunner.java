@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
         strict = false,
         tags = "@sales_manager",// we can also say tags = "not @ driver"--> run everything except driver tag
         plugin = {            // tags = "@sales_manager" or @driver" we running both of them
+                              // tags="@dashboard and @driver" runs scenario has both tags ONLY
                 "html:target/default-report",// plugin= "html:target/cucumber-html-report"
                 "json:target/cucumber1.json",
                 "rerun:target/rerun.txt"
@@ -438,15 +439,23 @@ In old cucumber version, it was like this:
 
 tags = "@driver"     - run scenarios only with this tag
 strict - true - to mark unimplemented step definitions as errors.
+
 To run scenarios, that have either or tags.
+
     tags = "@sales_manager or @driver"
+
 To run scenarios, that have both tags
+
     tags = "@sales_manager and @driver"
+
 failed to parse feature file means that syntax in feature file is wrong.
+
 tags for specific setup
 application version where this feature is present
 tag with bug number, @know_issue @BUG_VYT4311. To label scenarios with known bugs.
+
 @know_issue
+
 tags = "not @know_issue"
 To quickly verify that all bugs were fixed, run scenarios with the tag:
 tags = "@know_issue"
