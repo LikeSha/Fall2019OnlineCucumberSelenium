@@ -53,13 +53,13 @@ Intellij IDE ----Where we write a code
 Maven ----project builder tool
 Selenium WebDriver ----tool for automating web-based applications
 TestNG ---unit ,system and e2e(end to end) testing framework
-(unit test just targeting certian class ,or code to test.  e2e ---end to end testing)
+(unit test just targeting certain class ,or code to test.  e2e ---end to end testing)
 
 Test Driven Development (TDD)--Developers write test first BEFORE they write functionality,
 test first based on the requirement, then test ,if all tests passed, then developing later!
 TDD is about unit testing .In case of TDD , we are dealing with raw code.
 
-Behavior Driven Development (BDD)   BDD is about how to process requirement docutments,
+Behavior Driven Development (BDD)   BDD is about how to process requirement documents,
 how to write them. In case of BDD/BDT = its about testing the functionality from end-user perspective.
 So we are not dealing with raw code.BDD it's about UI point of view
 
@@ -106,7 +106,7 @@ New project : in IntelliJ click file ---- new ---project then add :
     </build>
 
 
-    dont forget add cucumber plugins: hit shit twice on keyboard,
+    dont forget add cucumber plugins: hit shift twice on keyboard,
     then search " Gherkin" and "Cucumber for Java"   total we need these 2 plugins.
 
 
@@ -118,7 +118,7 @@ New project : in IntelliJ click file ---- new ---project then add :
         runners
         step_definitions
 
-    right click on src/test-->new-->dirctory-->resources
+    right click on src/test-->new-->directory-->resources
     right click on resources folder --> mark as --> test resources root folder
     right click on src/test/resource-->new-->directory-->features
 
@@ -156,7 +156,7 @@ features - path to the folder/directory with feature files.
  right click feature file ,click" copy" or right click " copy path-->
  then select " copy from content root"
 
-REMEMBER!! DONT ADD SUBSTEPS PLUGIN!! IF YOU HAVE IT --- DELETE IT !!
+REMEMBER!! DON'T ADD SUBSTEPS PLUGIN!! IF YOU HAVE IT --- DELETE IT !!
 
 You need 2 plugins :
 
@@ -174,7 +174,7 @@ if feature file icon is gray, even after installing plugins :
 Check Settings-->Editor-->File Types.
 Verify that Cucumber Scenario is set to a Registered Pattern of *.feature.
 
-comman + option + esc ----force quit some program
+command + option + esc ----force quit some program
 control + alt + delete ---right on program --->end task
 
 How do we create feature files??
@@ -260,7 +260,7 @@ How do we create feature files??
 
 Right click on the features directory -->new-->file-->*.feature
 we store our test cases into feature file ,or we can say .feature file used to store BDD test scenarios.
-inside feature file, we don't write java code inside feature file,only plain Engliish text,
+inside feature file, we don't write java code inside feature file,only plain English text,
 every test scenario consist of test steps. every test step has a coding implementation,
 it calls step definition.. Inside step definition ,we write extra codes
 
@@ -296,13 +296,13 @@ I just write a scenario : Login as sales manager and verify that title is Dashbo
     how to implement this scenario into code ?
 
 5, we go to CucumberRunner class, inside CucumberOption block,
-under features = "src/test/resouces/features" we added a line :
+under features = "src/test/resources/features" we added a line :
    dryRun = true,
    ( we set dryRun = true is because we need to cucumber generate code implementation snippet to us ,
    so that we can copy paste it to our step_definition class.)
 
-   then right click " CucumberRunner class" , clickc" run CucumberRunner class" ,
-   then the implementation codes showing up on the console. it contians 3 snippets, Given ,When ,Then
+   then right click " CucumberRunner class" , click" run CucumberRunner class" ,
+   then the implementation codes showing up on the console. it contains 3 snippets, Given ,When ,Then
    correspondence to our scenario " Login as sales manager and verify that title is Dashboad" in Login feature .
 
 6, so what we will do now ? we copy all of them ( 3 of them)  .
@@ -406,7 +406,7 @@ Then, composition of cucumber framework:
                 This approach is useful for minor regression. When you need to test not entire system,
                 just some component or couple of them.
 
-    step_defintions
+    step_definitions
          simple java classes, where we keep code implementation of test steps.
 
           //Login.feature file
