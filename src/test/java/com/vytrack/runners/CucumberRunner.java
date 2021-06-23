@@ -746,7 +746,8 @@ How to run our test in intelliJ using maven to generate JSON cucumber report ?
   we do this is that we want to delete current target folder first ,so that we can see clearly the new reports
   going to generated soon.
 
-4,  then, click "verify" in Maven .it will only generate report when you click " verify" under Maven in intelliJ.
+4,  then, click "verify" in Maven to execute the tests and generate JSON(cucumber.json report) report.
+   it will only generate report when you click " verify" under Maven in intelliJ.
 ##############################################
 
 Cucumber Data Table - is used to extend test step. It allows to attach table to test step.
