@@ -32,6 +32,9 @@ April 12 ---Holiday , no class
 
 Cucumber itself doesn't run test ,it run with JUnit or testNG, it has to be on top of JUnit or testNG engine
 
+to search your tag in feature file :  ctrl+shift+f, then typing your tag inside bar, it will show you where is used.
+
+
 Tuesday--review excel + writing data into excel file.
 
    Agenda :
@@ -824,4 +827,7 @@ pay attention : printf to print parameter related content ,for example
     public void user_navigates_to_and(String tab, String module) {
         System.out.printf("User clicks on the %s tab and navigates to %s module\n",tab,module); //printf
         loginPage.navigateTo(tab,module);
+
+to search your tag in feature file :  ctrl+shift+f, then typing your tag inside bar, it will show you where is used.
+
  */
