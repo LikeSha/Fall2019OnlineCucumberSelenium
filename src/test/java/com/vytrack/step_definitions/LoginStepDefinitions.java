@@ -64,7 +64,7 @@ public class LoginStepDefinitions {
         // In the first example, %s will be replaced with the contents of the command variable.
 
     }
-
+//this is link to CreateCalendarEvents.feature first scenario user navigates to "Activities" and "Calendar Events"
     @When("user navigates to {string} and {string}")
     public void user_navigates_to_and(String tab, String module) {
         System.out.printf("User clicks on the %s tab and navigates to %s module\n",tab,module);
