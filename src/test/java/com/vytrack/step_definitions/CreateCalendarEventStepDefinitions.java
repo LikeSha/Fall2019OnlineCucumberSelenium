@@ -50,6 +50,9 @@ public class CreateCalendarEventStepDefinitions {
     public void user_enters_new_calendar_event_information(Map<String, String> dataTable) {
         calendarEventsPage.enterCalendarEventDescription(dataTable.get("description"));
         calendarEventsPage.enterCalendarEventTitle(dataTable.get("title"));
+//        If you specified data type as a Map, use get("keyName") to read values:
+//        dataTable.get("description");
+//        dataTable.get("title");
     }
 
     @Then("user verifies new calendar event was created successfully")
@@ -60,3 +63,9 @@ public class CreateCalendarEventStepDefinitions {
     }
 
 }
+//    DataTable - data structure from Cucumber BDD.
+//    Can be transformed into something more commonly used like: List, Map, List<Map>, etc..
+//    depends on how many columns do you have in the data table.
+//    Don't use DataTable, change it to something else....
+//            if you specify non-existing key name, you will get - NULL.
+//    make sure, that key name is correct.
