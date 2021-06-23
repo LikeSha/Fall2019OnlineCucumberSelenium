@@ -658,6 +658,23 @@ wait.until(ExpectedConditions.attributeToBe(element, "value", text));
 
 value attribute stores text input, so we just wait until it will receive entire text input.
 
+for example, in our test case ,we have this :
+ public void enterCalendarEventTitle(String titleValue) {
+        BrowserUtilities.waitForPageToLoad(20);
+        wait.until(ExpectedConditions.visibilityOf(title)).sendKeys(titleValue);
+        wait.until((ExpectedConditions.attributeToBe(title,"value",titleValue)));
+    }
+
+    public void enterCalendarEventDescription(String description) {
+        BrowserUtilities.wait(5);
+        BrowserUtilities.waitForPageToLoad(20);
+        //wait until frame is available and switch to it
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(descriptionFrame));
+        descriptionTextArea.sendKeys(description);
+        wait.until(ExpectedConditions.textToBePresentInElement(descriptionTextArea,description));
+        driver.switchTo().defaultContent();//exit from the frame
+    }
+
 System.out.printf("User clicks on the %s tab and navigates to %s module\n",tab,module);
 printf--formatted print
 
