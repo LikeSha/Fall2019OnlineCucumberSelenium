@@ -56,7 +56,7 @@ public class LoginStepDefinitions {
     // When user enters "storemanager85" username and "UserUser123" password
     @When("user enters {string} username and {string} password")
     public void user_enters_username_and_password(String string, String string2) {
-        System.out.printf("Login with user name %s and %s password\n", string, string2);
+        System.out.printf("Login with user name %s and %s password\n", string, string2);//printf
         loginPage.login(string,string2);//the %s is a 'format character',
         // indicating "insert a string here".
         // The extra parameters after the string in your two function calls
@@ -67,7 +67,7 @@ public class LoginStepDefinitions {
 //this is link to CreateCalendarEvents.feature first scenario user navigates to "Activities" and "Calendar Events"
     @When("user navigates to {string} and {string}")
     public void user_navigates_to_and(String tab, String module) {
-        System.out.printf("User clicks on the %s tab and navigates to %s module\n",tab,module);
+        System.out.printf("User clicks on the %s tab and navigates to %s module\n",tab,module);// printf
         loginPage.navigateTo(tab,module);
     }
 

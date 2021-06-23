@@ -817,4 +817,11 @@ Feature: Create calendar event
       | title       | Sprint Retrospective                                                                |
 
 the above entire Feature file will run if you call "activities"  tag in runner class
+
+pay attention : printf to print parameter related content ,for example
+
+ @When("user navigates to {string} and {string}")
+    public void user_navigates_to_and(String tab, String module) {
+        System.out.printf("User clicks on the %s tab and navigates to %s module\n",tab,module); //printf
+        loginPage.navigateTo(tab,module);
  */
