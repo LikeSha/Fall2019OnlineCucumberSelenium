@@ -69,3 +69,17 @@ public class CreateCalendarEventStepDefinitions {
 //    Don't use DataTable, change it to something else....
 //            if you specify non-existing key name, you will get - NULL.
 //    make sure, that key name is correct.
+
+/*
+1 column - List<String>
+
+2 columns - Map<String, String> - where keys will be always on the left, and values on the right.
+
+2+ columns - List<Map<String, String>> - where keys will be always on the first row.
+
+2+ columns - Map<String, List<String>>
+
+If you specified data type as a Map, use get("keyName") to read values:
+        dataTable.get("description");
+        dataTable.get("title");
+ */
