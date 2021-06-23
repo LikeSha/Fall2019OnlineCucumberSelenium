@@ -738,6 +738,13 @@ mvn clean verify -q
 If mvn command gives error, that means maven is no installed. Still you can use maven from intellij,
 but you won't be able to use outside of intellij, as CLI tool.
 
+How to run our test in intelliJ using maven to generate JSON cucumber report ?
+1, go to our runners class, and set tags=""
+2, make sure dryRun = false, strict = false,
+3,in terminal we run this command : mvn clean verify ( this is when you have maven installed )
+  if you don't have maven installed ,just click " clean" on the right side of intelliJ under" Maven"
+
+4, it will only generate report when you click " verify" under Maven in intelliJ.
 ##############################################
 
 Cucumber Data Table - is used to extend test step. It allows to attach table to test step.
