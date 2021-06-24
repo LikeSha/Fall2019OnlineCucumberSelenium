@@ -21,6 +21,9 @@ public class ViewCalendarEventsStepDefinitions {
      if it is only one column ,we can use List (List<String> dataTable)
      if it is two columns , we can use Map or List of Map (Map<String,String> dataTable)
      if it is more than two columns, we can use List of Maps.(List<String,String> dataTable)
+
+     In testNG, assertion part is assertEquals( actual,expected)
+     In JUnit ( Cucumber using JUnit plug in ) assertion part is assertEquals(expected,actual)
      */
 
 
