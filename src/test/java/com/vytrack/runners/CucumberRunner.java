@@ -858,3 +858,125 @@ pay attention : printf to print parameter related content ,for example
 to search your tag in feature file :  ctrl+shift+f, then typing your tag inside bar, it will show you where is used.
 
  */
+
+/*
+April 19,2020  data table topic
+
+   watch a 20 minutes short video about how to create cucumber project in slack .
+
+   https://learn.cybertekschool.com/courses/283/pages/create-cucumber-project?module_item_id=21707
+
+   TDD: Creating Unit Test before writing the actual code.
+
+   Data tables in Cucumber
+   Scenario Outline--> Data Driven Testing 9similar to @DataProvider in TestNG)
+
+   ########################################################################################
+
+   Data tables in cucumber simply used to extend test step.
+
+   When user logs in as "driver" | value in double quotes is a parameter
+
+   When user logs in as "admin"--> @When(user logs in as {string})
+                                    public void user_logs_in_as(String String){
+                                      //turn this phrase into action
+
+                                    }
+
+    Then user creates a new car with "testplates" car plates and "black" color "Toyota" make, "Camry"
+    model
+
+    @Then (user creates a new car with {string} car plates and {string} color {string} make, {string} model)
+    public void user_creates_a_new_car_with_car_plates and _color_make_model(String string, String string,
+    String string3, String string4){
+
+    }
+
+    Data table can make it look better and expand test step:
+
+    Then user creates a new car with following info:
+      |car plates |testplates |
+      |color      |black      |
+      |make       |Toyota     |
+      |model      |Camry      |
+
+
+      default step definition method:
+
+      @Then(user creates a new car with following info:)
+      public void user_creates_a_new_car_with_following-info(DataTable dataTable){
+
+      }
+
+      we can change DataTable to something else,
+      so cucumber will automatically transform it into some other data structure.
+
+      #AFTER---we changed DataTable into the Map
+
+      @Then("user creates a new car with following info:")
+      public void user_creates_a_new_car_with_following_info(Map<String,String> data){
+         dataTable.get("color");-->black
+         dataTable.get("car_plates")-->testplates
+      }
+
+      Remember : Data table must be specified immediately after the test step
+
+      Can we have multiple tata tables in one scenario?
+
+         YES !
+
+
+      Given user logs in with following credentials:
+      |username|stroemanager85|
+      |password|UserUser123   |
+
+      Then user creates a new car with following info:
+
+      |car plates |testplates |
+      |color      |black      |
+      |make       |Toyota     |
+      |model      |Camry      |
+
+      If values were modified in scenario, it will affect on step definition.
+      Step definition gets data from the scenario.
+
+      Can we have 3 or 4 columns?
+
+         yes !
+
+         How to manage step definition with more than 2 cloumns in the test step?
+
+      Then user creates a new car with following info:
+
+      |car plates |color      |make  |model| <----------------always reserved for key names(List<Map<String,String)>>)
+      |sdet       |red        |Toyota|Camry| 0
+      |driver     |purple     |Mazda |RX8  | 1
+      |racer      |blue       |Lincoln|MKS | 2
+
+      @Then)"user creates a new car with following info:")
+      public void user_creates_a_new_car_with_following_info(List<Map<String,String> data){
+
+          data.get(0)-->get data from first row(skipping column names)
+          data.get(0).get("color")-->red
+          data.get(1).get("make")--Mazda
+      }
+
+     to line up featrue file, use option + command + L(for Mac), windows users Control +Alt + L
+
+
+
+    datatype goes inside the curly braces.(all double quotes content is datatype and goes into curly braces)
+
+    Scenario: User permissions
+    Given I login as a "sales manager"
+    When I navigate to "Activities""Calendar Events"
+    Then View Per Page menu should have following options
+    |10|
+    |25|
+    |50|
+    |100|
+
+    #Before
+
+    @Then("View Per Page ")
+ */
