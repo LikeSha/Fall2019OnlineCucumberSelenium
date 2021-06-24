@@ -66,7 +66,7 @@ public class CalendarEventsPage extends AbstractPageBase {
         // reference for drop down manu show up
         viewPerPageToggle.click();
         BrowserUtilities.wait(2);
-        return BrowserUtilities.getTextFromWebElements(viewPerPageElements);
+        return BrowserUtilities.getTextFromWebElements(viewPerPageElements);// return : List of Strings.
     }
 
 
