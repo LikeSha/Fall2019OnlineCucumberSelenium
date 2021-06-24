@@ -1082,6 +1082,10 @@ exactly same test steps but different test data, use scenario outline.
       | salesmanager125 | UserUser123 | Cleveland Heller | 5
       | salesmanager140 | UserUser123 | Jameson Paucek   | 6
 
+Whenever we want to use steps, we need to use "" (double quote), this is explained example table
+why we need to put "<username>" and "<password>" and "<name>" inside double quote,we repeatedly
+use those parameters in our test steps.
+
 #  Test + DataProvider = Scenario Outline + Examples table
 
 Scenario: 1. User names test
