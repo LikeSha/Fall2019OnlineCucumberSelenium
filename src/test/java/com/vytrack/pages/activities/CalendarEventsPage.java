@@ -55,7 +55,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     //    //* selects all elements in a document, regardless of name
 
 
-    @FindBy(css = "button[class*='btn dropdown-toggle']")// in cssSelector * means contians
+    @FindBy(css = "button[class*='btn dropdown-toggle']")// in cssSelector * means contains
     private WebElement viewPerPageToggle;
   // we added the last FindBy element, is because that drop down menu is not visible for all element, you have to
     // click that drop down menu to let them show up , so we can locate the element
@@ -65,7 +65,7 @@ public class CalendarEventsPage extends AbstractPageBase {
         //line 63 to wait createCalendarEvent button to showing up ,then we can confirm on this page
         // the drop down manu must be showing up too, "wait createCalendarEvent button condition" just a
         // reference for drop down manu show up
-        viewPerPageToggle.click();
+        viewPerPageToggle.click();// to make the drop down menu visible so we can collect all elements
         BrowserUtilities.wait(2);
         return BrowserUtilities.getTextFromWebElements(viewPerPageElements);// return : List of Strings.
     }
