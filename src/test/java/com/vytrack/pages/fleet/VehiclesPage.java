@@ -68,6 +68,9 @@ public class VehiclesPage extends AbstractPageBase {
 
     public String getCarGeneralInfo(String parameter) {
         String xpath = "//label[text()='" + parameter + "']/following-sibling::div/div";
+        // we changed driver,license plate...as parameter, so above line of code originally looks like this :
+        // if it is driver: "//label[text()='driver']/following-sibling::div/div";
+        // if it is licentplate : "//label[text()='license plate']/following-sibling::div/div";
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         return driver.findElement(By.xpath(xpath)).getText().trim();
     }
