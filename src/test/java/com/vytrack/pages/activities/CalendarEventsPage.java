@@ -57,7 +57,8 @@ public class CalendarEventsPage extends AbstractPageBase {
 
     @FindBy(css = "button[class*='btn dropdown-toggle']")// in cssSelector * means contians
     private WebElement viewPerPageToggle;
-
+  // we added the last FindBy element, is because that drop down menu is not visible for all element, you have to
+    // click that drop down menu to let them show up , so we can locate the element
     public List<String> getViewPerPageOptions() {
         BrowserUtilities.waitForPageToLoad(20);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Create Calendar event']")));
