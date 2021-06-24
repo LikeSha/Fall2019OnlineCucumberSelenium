@@ -1041,7 +1041,6 @@ public void view_per_page_menu_should_have_following_options(DataTable dataTable
 
 You will get this error when there is no matching .json reports in the target folder.
 
+please see the automation class day 31, 04.19.2020 classNote.
 
-  */
-
-
+*/
