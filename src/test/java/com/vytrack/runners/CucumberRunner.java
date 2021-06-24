@@ -1044,4 +1044,104 @@ You will get this error when there is no matching .json reports in the target fo
 
 please see the automation class day 31, 04.19.2020 classNote.
 
+
+April 21,2020 regular class
+
+Agenda : Scenario Outline
+
+scenario Outline is GOOD FOR SMOKE TEST !
+
+###################
+
+Scenario Outline is used for data driven testing.Whenever you have couple of scenarios with
+exactly same test steps but different test data, use scenario outline.
+
+################
+ Scenario Outline is used for data driven testing.
+ Whenever you have couple of scenarios with exactly same test steps but different test data, use scenario outline.
+
+ Scenario Outline must be followed by Examples table
+
+ To use values from the table, specify parameter name in between angled brackets <name>
+ One scenario outline can have couple examples tables
+ As many rows of records you have in examples table, as many times scenario outline will be execute
+
+ Every row in examples table represents some test case
+ Scenario Outline can be used only when group of tests have same steps but different test data
+
+ Scenario Outline: User names test
+    Given user is on the landing page
+    When user enters "<username>" username and "<password>" password
+    Then user name should be "<name>"
+    Examples:
+      | username        | password    | name             |
+      | user187         | UserUser123 | Jerel Vandervort | 1
+      | user200         | UserUser123 | Lonzo Leuschke   | 2
+      | storemanager52  | UserUser123 | Roma Medhurst    | 3
+      | storemanager66  | UserUser123 | Carlos Ernser    | 4
+      | salesmanager125 | UserUser123 | Cleveland Heller | 5
+      | salesmanager140 | UserUser123 | Jameson Paucek   | 6
+
+#  Test + DataProvider = Scenario Outline + Examples table
+
+Scenario: 1. User names test
+    Given user is on the landing page
+    When user enters "user187" username and "UserUser123" password
+    Then user name should be "Jerel Vandervort"
+Scenario: 2. User names test
+    Given user is on the landing page
+    When user enters "user200" username and "UserUser123" password
+    Then user name should be "Lonzo Leuschke"
+Scenario: 3. User names test
+    Given user is on the landing page
+    When user enters "storemanager52" username and "UserUser123" password
+    Then user name should be "Roma Medhurst"
+Scenario: 4. User names test
+    Given user is on the landing page
+    When user enters "storemanager66" username and "UserUser123" password
+    Then user name should be "Carlos Ernser"
+Scenario: 5. User names test
+    Given user is on the landing page
+    When user enters "salesmanager125" username and "UserUser123" password
+    Then user name should be "Cleveland Heller"
+Scenario: 6. User names test
+    Given user is on the landing page
+    When user enters "salesmanager140" username and "UserUser123" password
+    Then user name should be "Jameson Paucek"
+
+Examples is required by Scenario Outline. Wheres data table,
+is optional and used to expand some test step. Basically, to fit more test data into one test step.
+
+@scenario_outline_2
+Feature: Login tests with Scenario Outline
+  Scenario Outline: Go to <module> and verify title: <title>
+    Given user is on the login page
+    When user logs in as "<user_type>"
+    And user navigates to "<tab>" and "<module>"
+    Then user verifies that page title is "<title>"
+    Examples:
+      | user_type     | tab        | module          | title                                                              |
+      | driver        | Fleet      | Vehicles        | Car - Entities - System - Car - Entities - System                  |
+      | driver        | Fleet      | Vehicles Model  | Vehicles Model - Entities - System - Car - Entities - System       |
+      | driver        | Customers  | Accounts        | Accounts - Customers                                               |
+      | driver        | Customers  | Contacts        | Contacts - Customers                                               |
+      | driver        | Activities | Calendar Events | Calendar Events - Activities                                       |
+      | driver        | System     | Jobs            | Jobs - System                                                      |
+      | sales manager | Fleet      | Vehicles        | All - Car - Entities - System - Car - Entities - System            |
+      | sales manager | Fleet      | Vehicles Model  | All - Vehicles Model - Entities - System - Car - Entities - System |
+      | sales manager | Customers  | Accounts        | All - Accounts - Customers                                         |
+      | sales manager | Customers  | Contacts        | All - Contacts - Customers                                         |
+      | sales manager | Activities | Calendar Events | All - Calendar Events - Activities                                 |
+      | sales manager | System     | Jobs            | All - Jobs - System                                                |
+      | store manager | Fleet      | Vehicles        | All - Car - Entities - System - Car - Entities - System            |
+      | store manager | Fleet      | Vehicles Model  | All - Vehicles Model - Entities - System - Car - Entities - System |
+      | store manager | Customers  | Accounts        | All - Accounts - Customers                                         |
+      | store manager | Customers  | Contacts        | All - Contacts - Customers                                         |
+      | store manager | Activities | Calendar Events | All - Calendar Events - Activities                                 |
+      | store manager | System     | Jobs            | All - Jobs - System                                                |
+
+
+
+scenario Outline is GOOD FOR SMOKE TEST !
+
 */
