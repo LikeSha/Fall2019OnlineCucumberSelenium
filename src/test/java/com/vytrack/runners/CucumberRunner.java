@@ -954,7 +954,7 @@ April 19,2020  data table topic
       |driver     |purple     |Mazda |RX8  | 1
       |racer      |blue       |Lincoln|MKS | 2
 
-      @Then)"user creates a new car with following info:")
+      @Then("user creates a new car with following info:")
       public void user_creates_a_new_car_with_following_info(List<Map<String,String> data){
 
           data.get(0)-->get data from first row(skipping column names)
@@ -962,7 +962,7 @@ April 19,2020  data table topic
           data.get(1).get("make")--Mazda
       }
 
-     to line up featrue file, use option + command + L(for Mac), windows users Control +Alt + L
+     to line up feature file, use option + command + L(for Mac), windows users Control +Alt + L
 
 
 
@@ -976,8 +976,57 @@ April 19,2020  data table topic
     |25|
     |50|
     |100|
+   As you know ,if it is only one column in data, best selection is List
+   if it is a two columns dataTable, we choose Map<String,String>
+
 
     #Before
 
-    @Then("View Per Page ")
- */
+
+
+@Then("View Per Page menu should have following options")
+public void view_per_page_menu_should_have_following_options(DataTable dataTable){
+
+}
+
+   #After
+
+    @Then("View Per Page menu should have following options")
+    public void view_Per_Page_menu_should_have_following options(List<String> dataTable){
+         dataTable.get(0)-->"10"
+         dataTable.get(1)-->"25"
+         dataTable.get(2)-->"50"    this collection gonna be String type
+         dataTable.get(3)-->"100"
+
+
+    }
+
+    @Then("View Per Page menu should have following options")
+    public void view_Per_Page_menu_should_have_following options(List<Integer> dataTable){
+         dataTable.get(0)-->10
+         dataTable.get(1)-->25
+         dataTable.get(2)-->50    this collection gonna be Integer type
+         dataTable.get(3)-->100
+
+
+    }
+
+
+    Scenario: User permissions
+    Given user is on the login page
+    When user navigates to "Activities" and "Calendar Events"
+    Then View Per Page menu should have following options
+    | 10 |
+    | 25 |
+    | 50 |
+    | 100|
+
+    Failed to execute goal net.masterthought:maven-cucumber-reporting:4.8.0:generate (default-cli) on project Fall2019OnlineCucumberSelenium: The parameters 'jsonFiles' for goal net.masterthought:maven-cucumber-reporting:4.8.0:generate are missing or invalid
+
+
+You will get this error when there is no matching .json reports in the target folder.
+
+
+  */
+
+
