@@ -16,15 +16,24 @@ public class ViewCalendarEventsStepDefinitions {
         Assert.assertEquals(dataTable,calendarEventsPage.getViewPerPageOptions());
     }
 
-    /*
-     depend on size of data ,we can use proper data structure
+
+
+
+
+}
+/*
+depend on size of data ,we can use proper data structure
      if it is only one column ,we can use List (List<String> dataTable)
      if it is two columns , we can use Map or List of Map (Map<String,String> dataTable)
      if it is more than two columns, we can use List of Maps.(List<String,String> dataTable)
 
      In testNG, assertion part is assertEquals( actual,expected)
      In JUnit ( Cucumber using JUnit dependency) assertion part is assertEquals(expected,actual)
-     */
 
+     How to run two runners class at the same time ? lets say ,I want to run "CucumberRunner" class
+     and "ActivitiesTestRunner" class together at the same time .
 
-}
+     1, go to pom.xml
+     2, in the <configuration> we will make some change , our original <Configuration> is : see class note
+     day April 19,2020
+ */
