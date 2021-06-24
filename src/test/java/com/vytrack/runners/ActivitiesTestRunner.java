@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         tags = "", //  to run all tests in cucumber runner class, we can just set tags=""
         plugin = {
                 "html:target/default-report",
-                "json:target/cucumber2.json"
+                "json:target/cucumber2.json"//cucumber2.jason ,is because we have cucumber1.json at CucumberRunner class
         }
 
 )
