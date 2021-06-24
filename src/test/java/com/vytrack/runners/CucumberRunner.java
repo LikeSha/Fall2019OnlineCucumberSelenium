@@ -976,8 +976,23 @@ April 19,2020  data table topic
     |25|
     |50|
     |100|
+
    As you know ,if it is only one column in data, best selection is List
-   if it is a two columns dataTable, we choose Map<String,String>
+   as for List, the first value is always value itself. How Cucumber knows this ?
+   Cucumber has its rules to identify the data structure, if Cucumber identify there is only one column,
+   it will take each value as value itself. Because List doesn't require any column name.
+
+   List is the data structure that values are referenced by index, not by Key name
+   Map is the data structure that values are referenced by Key
+   the example is as following methods
+
+   if it is a two columns dataTable, Cucumber takes it as Map structure , and
+   we choose Map<String,String>, the Key always on the left side ,the value is on the right side.
+
+   if it is a mutiple column table, Cucumber automatically take is as List of Map
+   it doesn't matter how many rows you have ,the first row always the column names,
+   and start from the second row , its values
+
 
 
     #Before
