@@ -922,7 +922,7 @@ April 19,2020  data table topic
 
       Remember : Data table must be specified immediately after the test step
 
-      Can we have multiple tata tables in one scenario?
+      Can we have multiple data tables in one scenario?
 
          YES !
 
