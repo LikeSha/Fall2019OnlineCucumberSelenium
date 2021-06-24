@@ -23,7 +23,7 @@ public class ViewCalendarEventsStepDefinitions {
      if it is more than two columns, we can use List of Maps.(List<String,String> dataTable)
 
      In testNG, assertion part is assertEquals( actual,expected)
-     In JUnit ( Cucumber using JUnit plug in ) assertion part is assertEquals(expected,actual)
+     In JUnit ( Cucumber using JUnit dependency) assertion part is assertEquals(expected,actual)
      */
 
 
