@@ -55,7 +55,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     //    //* selects all elements in a document, regardless of name
 
 
-    @FindBy(css = "button[class*='btn dropdown-toggle']")
+    @FindBy(css = "button[class*='btn dropdown-toggle']")// in cssSelector * means contians
     private WebElement viewPerPageToggle;
 
     public List<String> getViewPerPageOptions() {
