@@ -989,7 +989,7 @@ April 19,2020  data table topic
    if it is a two columns dataTable, Cucumber takes it as Map structure , and
    we choose Map<String,String>, the Key always on the left side ,the value is on the right side.
 
-   if it is a mutiple column table, Cucumber automatically take is as List of Map
+   if it is a multiple column table, Cucumber automatically take is as List of Map
    it doesn't matter how many rows you have ,the first row always the column names,
    and start from the second row , its values
 
