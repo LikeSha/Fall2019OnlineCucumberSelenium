@@ -18,9 +18,9 @@ public class ViewCalendarEventsStepDefinitions {
 
     /*
      depend on size of data ,we can use proper data structure
-     if it is only one column ,we can use List
-     if it is two columns , we can use Map or List of Map
-     if it is more than two columns, we can use List of Maps.
+     if it is only one column ,we can use List (List<String> dataTable)
+     if it is two columns , we can use Map or List of Map (Map<String,String> dataTable)
+     if it is more than two columns, we can use List of Maps.(List<String,String> dataTable)
      */
 
 
