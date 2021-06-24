@@ -949,7 +949,7 @@ April 19,2020  data table topic
 
       Then user creates a new car with following info:
 
-      |car plates |color      |make  |model| <----------------always reserved for key names(List<Map<String,String)>>)
+      |car plates |color      |make  |model| <-----------always reserved for key names(List<Map<String,String)>>)
       |sdet       |red        |Toyota|Camry| 0
       |driver     |purple     |Mazda |RX8  | 1
       |racer      |blue       |Lincoln|MKS | 2
