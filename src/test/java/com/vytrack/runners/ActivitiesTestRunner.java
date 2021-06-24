@@ -20,4 +20,7 @@ import org.junit.runner.RunWith;
 public class ActivitiesTestRunner {
 
 }
-
+// how to create new folder to group our tests ? lets say I wanna put all activities features together,
+// we just right click "features" folder(directory), ---> new--> directory--> then give a name " activities. then
+// move CreateCalendarEvents.feature and ViewCalendarEvents.feature into activities folder. Now all
+//activities related features are under this folder.

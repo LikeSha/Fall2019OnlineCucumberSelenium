@@ -61,6 +61,9 @@ public class CalendarEventsPage extends AbstractPageBase {
     public List<String> getViewPerPageOptions() {
         BrowserUtilities.waitForPageToLoad(20);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Create Calendar event']")));
+        //line 63 to wait createCalendarEvent button to showing up ,then we can confirm on this page
+        // the drop down manu must be showing up too, "wait createCalendarEvent button condition" just a
+        // reference for drop down manu show up
         viewPerPageToggle.click();
         BrowserUtilities.wait(2);
         return BrowserUtilities.getTextFromWebElements(viewPerPageElements);
