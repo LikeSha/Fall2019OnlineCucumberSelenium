@@ -1528,7 +1528,8 @@ easy, we simply create a smokeTest.feature , this feature file exclusively doing
 adjustment on the table, make it very short, please see " SmokeTest.feature" . in this smoke test example,
 we removed all other roles, only keep sales manager to test, but we can also verify  Fleet, Customers
 Sales, Activities, Marketing,Repor&Segments, System .....( all components under tabs functionalities).
-our case  is not a completely smoke test.
+our case  is not a completely smoke test. WE ONLY TEST MAIN COMPONENTS, MEANS MAJOR FUNCTIONALITIES ON
+SMOKE TEST.
 
 
    Agenda : Parallel testing in Cucumber
