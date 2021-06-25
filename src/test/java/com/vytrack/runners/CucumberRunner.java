@@ -1514,7 +1514,18 @@ page can be opened !!! lets say vytrack , when I click Vehicles page ,activities
 and it can open smoothly, easily ,and nothing wrong ,every content in side page, all components, tags, tabs
 are works fine. Normally we use admins credential ( why? because we can only use who has authorization
 to log in page) to test components ( to test smoke test) ,salesmanager also can control everything in this
-application ,so we can also use salesmanager credential to test every componenets .
+application ,so we can also use salesmanager credential to test every components .
+
+when we do smoke testing , for example ,a feature with @smoke tag on top, it means we need to smoke test it
+this feature contains example table, in the table, there are so many rows, some rows are exactly same except
+username, but the functionality need to be tested are same ,in this case ,we only pick one row to test, for example:
+
+in LoginDDT.feature, our table is big ,we have driver, sales manager, store manager, each person has some
+conteng, but among these three persons, they have something exactly same, like driver move to Fleet tab , click
+Vehicles, and verify title. this functionality storemanager also have , they all showing on table. we just pick
+one person ,either driver or store manager to test.we don.t need to put entire table to smoke test , to make it
+easy, we simply create a smokeTest.feature , this feature file exclusively doing smoke test ,and we can make
+adjustment on the table, make it very short, please see " SmokeTest.feature" .
 
 
    Agenda : Parallel testing in Cucumber
