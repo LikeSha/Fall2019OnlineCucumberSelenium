@@ -19,3 +19,5 @@ Feature: Smoke test
     #
     #in terminal ,we write (run) : mvn clean verify -Dcucumber.options="--tags @smoke_test"
     #-D is for environment variable
+    # this is for quiet operation ,maven dont throw too much outputs :
+    # mvn clean verify -Dcucumber.options="--tags @smoke_test" -q
