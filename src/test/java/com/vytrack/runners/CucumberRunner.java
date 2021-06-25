@@ -1506,6 +1506,9 @@ API TESTING PROCESS :
 
  April 25,2020
 
+ to run parallel testing ,make sure comment out "tag" in CucumberRunner class, so it can use all threads
+ to run all features, parallel ONLY run featrues file.
+
    Agenda : Parallel testing in Cucumber
             Smoke test ---When new build is deployed => smoke test must be triggered immediately.
             It is first step of verification that build was success.
