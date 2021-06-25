@@ -1506,6 +1506,11 @@ API TESTING PROCESS :
 
  April 25,2020
 
+How to run smoke test with specific tag from terminal ?
+
+in terminal ,we write (run) : mvn clean verify -Dcucumber.options="--tags @smoke_test"
+-D is for environment varialbe
+
  to run parallel testing ,make sure comment out "tag" in CucumberRunner class, so it can use all threads
  to run all features, parallel ONLY run features file. We can run classes, methods,or both.
 
