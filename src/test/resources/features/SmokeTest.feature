@@ -21,3 +21,8 @@ Feature: Smoke test
     #-D is for environment variable
     # this is for quiet operation ,maven dont throw too much outputs :
     # mvn clean verify -Dcucumber.options="--tags @smoke_test" -q
+
+  # another better method to run smoke test is :
+  # 1, we added profile in pom.xml
+  # 2, then we run in terminal : mvn clean test -P Smoke  --> P means Profile
+  # this command run smoke test based on profile id, not based on entire build to run
