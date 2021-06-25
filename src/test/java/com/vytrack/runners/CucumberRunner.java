@@ -1509,6 +1509,11 @@ API TESTING PROCESS :
  to run parallel testing ,make sure comment out "tag" in CucumberRunner class, so it can use all threads
  to run all features, parallel ONLY run features file. We can run classes, methods,or both.
 
+what on earth is smoke test ? very simple : just verify ( make sure ) all components on the application
+page can be opened ! lets say vytrck , when I click Vehicles page ,activities page,... whatever page I clicked
+and it can open smoothly, easily ,and nothing wrong ,every content in side page, all components, tags, tabs
+are works fine.
+
    Agenda : Parallel testing in Cucumber
             Smoke test ---When new build is deployed => smoke test must be triggered immediately.
             It is first step of verification that build was success.
