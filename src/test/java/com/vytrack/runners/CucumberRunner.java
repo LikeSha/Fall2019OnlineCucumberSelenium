@@ -1510,9 +1510,12 @@ API TESTING PROCESS :
  to run all features, parallel ONLY run features file. We can run classes, methods,or both.
 
 what on earth is smoke test ? very simple : just verify ( make sure ) all components on the application
-page can be opened ! lets say vytrck , when I click Vehicles page ,activities page,... whatever page I clicked
+page can be opened !!! lets say vytrack , when I click Vehicles page ,activities page,... whatever page I clicked
 and it can open smoothly, easily ,and nothing wrong ,every content in side page, all components, tags, tabs
-are works fine.
+are works fine. Normally we use admins credential ( why? because we can only use who has authorization
+to log in page) to test components ( to test smoke test) ,salesmanager also can control everything in this
+application ,so we can also use salesmanager credential to test every componenets .
+
 
    Agenda : Parallel testing in Cucumber
             Smoke test ---When new build is deployed => smoke test must be triggered immediately.
