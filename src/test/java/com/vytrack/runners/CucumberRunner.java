@@ -1149,3 +1149,354 @@ Feature: Login tests with Scenario Outline
 scenario Outline is GOOD FOR SMOKE TEST !
 
 */
+
+/*
+April 22,2020 Regular class
+
+   Cucumber review
+
+       -tags
+       -background
+       -data tables
+       -scenario outline
+
+       Gherkin language -- is used to write BDD scenarios
+
+   The biggest challenge is to understand environment ( Vysyl said so)
+
+       -
+
+
+   ############################################
+
+
+   Agenda:
+    Cucumber review
+        - tags
+        - background
+        - data tables
+        - scenario outline
+        - hooks
+        - runners
+        - step definitions
+        - report
+        - annotations
+        - feature
+
+##################
+
+    Gherkin language - is used to write BDD scenarios.
+
+    Keywords:
+        Given
+        When
+        Then
+        And
+        But
+        Background
+        Scenario
+        Scenario Outline
+        Examples
+
+Test data - is stored in feature files. We use parameters, data tables,
+examples table to store test data in feature files.
+
+Who provides test data?
+ 1. yourself.
+
+ 2. If you are responsible only for automation, and test cases are written by manual testers,
+ then they give you ready test with all steps and test data.
+
+ 3. developers can give you too
+
+ Background - we use to reduce number of same steps.
+ If all scenarios in same feature file have common beginning steps, we can put them under background.
+
+Scenario = test = test case = test method (TestNG)
+locators can be stored in page classes, in interfaces, and in property files.
+
+Scenario Outline vs Scenario
+Scenario = runs only once
+Scenario Outline = runs as many times as many rows of test data in examples table
+Scenario Outline - used for data driven testing. When we have 2 or more scenarios with exactly same steps
+but different inputs, we use Scenario Outline.
+
+Scenario Outline Must be followed by examples table.
+data is stored in between pipes |value|
+first is a table heading.
+
+Parameters: we use them to make steps reusable:
+    When user logs in as "driver" --> anything in double quotes will be provided as a parameter to step definition.
+    Parameters can be: strings, integers and floats. Usually we use strings.
+
+Data tables - we use to expand test steps and fit more test data into one step. We can have 1 or more columns.
+1 column - List<E>
+2 columns - Map<E, E> or List<Map<E, E>>
+2 + columns - List<Map<E, E>>, Map<E, List<E>>
+
+Tags - we used tags to run some test scenarios and ignore others or vice versa.
+@tag - run scenarios only with this tag
+@tag and @tag2 - run only scenarios that have both of them
+@tag or @tag2  - run scenarios that have either @tag or @tag2
+@tag or not @tag2 - run scenarios with a @tag that are not marked with @tag2
+old syntax                                      current syntax
+tags = {"@tag"} is unchanged
+tags = {"~tag"} becomes tags =                    {"not tag"}
+tags = {"@tag1,@tag2") becomes tags =             {"@tag1 or @tag2"}
+tags = {"@tag1","@tag2"} becomes tags =         {"@tag1 and @tag2"}
+tags = {"@tag1","@tag2,@tag3"} becomes tags =   {"@tag1 and (@tag2 or @tag3)"}
+
+what kind of tags do you have?
+    module name
+    jira issue tag (bug or story)
+    smoke test - scenarios that belong to smoke test
+
+Hooks - methods that are running before and after every test scenario.
+We used @Before hook to prepare environment for test, and @After hook to clean up environment after test.
+
+@After - take a screenshot in case of failure, attach that screenshot to report and close browser.
+
+@Before
+public void setup(){
+    this code will be executed
+    before every scenario
+}
+same think applies to after hook:
+@After
+public void cleanup(){
+    this code will be executed
+    after every scenario
+}
+
+We can have couple of hooks marked with some tag:
+
+@Before("@special")
+public void specialHookBefore(){
+    this code will be executed
+    only before scenarios with
+    a tag @special
+}
+same think applies to after hook:
+@After("@special")
+public void specialHookAfter(){
+    this code will be executed
+    only after scenarios with
+    a tag @special
+}
+
+Runner class: - used to kick off cucumber test scenarios.
+ - it must know where are the step definitions and hooks
+
+         glue = "com/vytrack/step_definitions",
+ - it must know where are the features
+         features = "src/test/resources",
+ - Cucumber generates couple of reports, but to get them, you need to configure plugin part of @CucumberOptions.
+ - it must have @CucumberOptions and @RunWith(Cucumber.class) tags on top of class!
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        glue = "com/vytrack/step_definitions",
+        features = "src/test/resources",
+        dryRun = false,
+        strict = false,
+        tags = "@create_car_ddt",
+        plugin = {
+                "html:target/default-report",
+                "json:target/cucumber1.json"
+        }
+)
+public class CucumberRunner {
+}
+
+dryRun = true, to check if every test step has been implemented.
+dryRun = false, to run tests indeed.
+strict = true, to mark unimplemented steps as errors.
+plugin = {
+                "html:target/default-report", - to get default html report
+                "json:target/cucumber1.json" - to get JSON report that later can be used
+                                               to generate nice HTML report by 3rd party plugins,
+                                               for example - maven-cucumber reporting plugin.
+        }
+
+########################
+1. Create maven project
+        project name: CucumberWebOrdersFall2019
+        group id:     com.weborders
+        artifact id:  CucumberWebOrdersFall2019
+
+        add this first into pom.xml file : google search :maven compiler plugin-->
+        click search result: "Apache Maven Compiler Plugin--setting the -source and ....",
+        then -->on the left side of the page ,there is a list about compiler ,
+        we choose " Compile Using-source and -target javac Options",
+        then we copy " configure the plugin directly" in the middle of page ,
+        this is inside a frame , about 19 lines of code. copy that into pom.xml file.
+
+2. Add dependencies: ( go to MVNREPOSITORY webpage ,search dependencies you need)
+
+    <properties>
+        <maven.compiler.source>12</maven.compiler.source>
+        <maven.compiler.target>12</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>12</source>
+                    <target>12</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>( go to MVNREPOSITORY webpage ,search: SLF4J select latest version of cucumber )
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>  ( go to MVNREPOSITORY webpage ,search: cucumber JVM ,select latest version of cucumber )
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>5.6.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>( go to MVNREPOSITORY webpage ,search: Selenium Java select latest version of cucumber )
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>( go to MVNREPOSITORY webpage ,search: Webdriver manager select latest version of cucumber )
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+    </dependencies>
+
+3. Create .gitignore with a following content:
+        .idea
+        *.iml
+        target
+        .DS_Store
+        test-output
+Add more items if needed.
+
+4. Create packages:
+    right click on src -> test -> java.
+    create a package: com.weborders
+            pages - for page classes
+            runners - cucumber test runners classes
+            step_definitions - to keep step definition methods,
+            that are used for code implementation of tests scenarios.
+            utilities - reusable code
+
+    right click on src -> test --> new directory - resources/features
+    under features, we keep all feature files
+    under resources, we keep all test data along with feature files.
+
+5. Create configuration.properties file with following content:
+    browser=chrome
+    url=http://secure.smartbearsoftware.com/samples/testcomplete12/weborders
+    username=Tester
+    password=test
+    We use properties file to store some project configuration info.
+
+    For example:
+        environment URLs for UI, API and Data Base.
+        credentials
+        API end points
+        selenium grid configuration --> info about servers and how to connect to them
+
+6. Add utilities for manipulations with:
+    browser
+    files
+    date and time
+    api
+    data base
+    pdf files
+    excel files
+    etc....
+
+7. Create a runner class:
+    import io.cucumber.junit.Cucumber;
+    import io.cucumber.junit.CucumberOptions;
+    import org.junit.runner.RunWith;
+    @RunWith(Cucumber.class)
+    @CucumberOptions(
+            glue = "com/vytrack/step_definitions",
+            features = "src/test/resources",
+            dryRun = false,
+            strict = false,
+            tags = "@create_car_ddt",
+            plugin = {
+                    "html:target/default-report",
+                    "json:target/cucumber1.json"
+            }
+    )
+    public class CucumberRunner {
+    }
+
+8. Add LoginStepDefintions class under step_defintions package.
+
+9. Create you first feature file called Login.feature under resources --> features
+    - you need to create at least one scenario
+
+10. Perform dry run and paste generated steps from console into LoginStepDefintions class.
+
+11. Create base page class
+    - initialize page factory
+    - allocate all common locators and store them  in this class.
+    It shouldn't be done overnight, you can re-factor this any time.
+
+12. Create LoginPage class and allocate all required by previously created test cases web element
+    and store them under corresponding page classes, in case you need more than just login page class.
+    This class as any other page class must inherit from BasePage class.
+
+13. Create a page object of LoginPage in LoginStepDefinitions class to be able to
+    interact with the page as part of your test case.
+
+14. Add Hooks class.
+
+    - create a @Before hook
+        maximize window
+    - create a @After hook
+        take a screenshoot and attach it to report. close a driver at the end.
+
+15. Create local git repository and commit code to github
+    git init
+    git add .
+    git commit -m "first commit"
+
+    - Go to github and create  a repository with corresponding name: CucumberWebOrdersFall2019
+    go back to intellij and execute commands for exiting git project that github will display to you.
+break until 9:02
+
+
+
+
+API TESTING PROCESS :
+
+1.    Maven compiler plugin
+2.    CUCUMBER JUNIT Dep
+3.    Cucumber Java Dep
+4.    Selenium Dep
+5.    SLF4J-api Dep
+6.    SLF4J-simple Dep
+7.    Io.github.bonigaricia
+ */
