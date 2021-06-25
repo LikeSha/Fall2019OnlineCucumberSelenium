@@ -14,3 +14,8 @@ Feature: Smoke test
       | sales manager | Customers  | Accounts        | All - Accounts - Customers                                         |
       | sales manager | Customers  | Contacts        | All - Contacts - Customers                                         |
       | sales manager | Activities | Calendar Events | All - Calendar Events - Activities                                 |
+
+    # How to run smoke test with specific tag from terminal ?
+    #
+    #in terminal ,we write (run) : mvn clean verify -Dcucumber.options="--tags @smoke_test"
+    #-D is for environment variable
