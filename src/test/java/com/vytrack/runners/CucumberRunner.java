@@ -1525,7 +1525,10 @@ conteng, but among these three persons, they have something exactly same, like d
 Vehicles, and verify title. this functionality storemanager also have , they all showing on table. we just pick
 one person ,either driver or store manager to test.we don.t need to put entire table to smoke test , to make it
 easy, we simply create a smokeTest.feature , this feature file exclusively doing smoke test ,and we can make
-adjustment on the table, make it very short, please see " SmokeTest.feature" .
+adjustment on the table, make it very short, please see " SmokeTest.feature" . in this smoke test example,
+we removed all other roles, only keep sales manager to test, but we can also verify  Fleet, Customers
+Sales, Activities, Marketing,Repor&Segments, System .....( all components under tabs functionalities).
+our case  is not a completely smoke test.
 
 
    Agenda : Parallel testing in Cucumber
