@@ -1859,14 +1859,140 @@ Provides Advance configuration -Makes configuration easier
 //        install - install the package into the local repository, for use as a dependency in other projects locally
 //        deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
 //
-//
-//
-//
-//
-//
-//
-//
-//
+////   Regression testing ---it's type of functional testing that is performed before release.
+//     Regression suit includes all tests cases,
+//     so we are covering entire application.
+
+/*
+
+April 26,2020
+
+  note copied from Seda Civan
+
+  Developers come together and develop - review - commit -, but this wouldn’t be possible without version control system.
+
+All developers code somehow have to come and work together so we use git - commit and push.
+But this process must be also follow with code review.
+Beside test driven development approach with them doing unit testing; also someone need to review the code.
+With testers code; it is the same, needs to be reviewed - peer review.
+
+Unverified code is risky.
+
+We work in our own branch - continiously working in our branches then commit - push -
+
+pulll request - peer review.
+
+Code also can be automatically verified with continiously integration tools.
+Sonarqube - verifies code quality.
+
+Scans the code from top to buttom, looks for some potential infinite loops, etc..
+When their company integrated this Sonarqube - they got tons of error.
+Sonarqube incourages better code quality and security.
+This process is done automatically beside peer review when developer push the code.
+Sonarqube gives report and tells that you have a bug in the code.
+It can compare with the previous release, did you get more bugs etc.. Developers tool, testers not really use.
+
+Build - what is created after code compilation, means already compiled code.
+
+Build is -> packaging the code and making it something runnable
+Maven is project builder - build can be done in our computer - when we click mvn test.
+But if everything have to happen in our computer; it would have to be open 7/24, it’s not preferable.
+
+better way is =>
+Code comes from version control, build happens in separate computer that is ready 7/24.
+
+You push everything to github -> jenkins take the code from github like intellij, it compiles the code on server and creates executible file - do the build process.
+
+Server - computer that is used to serve other computers. Server runs 7/24 - stronger than computer.
+
+Jenkins : Takes the code from github & creates build & deploys to environments and at the end deploys to production environment.
+
+Release is official build. For ex: version 1.21 was not open to public but version 1.25 was open.
+
+Jenkins : Takes the code from github & creates build & deploys to environments and at the end deploys to production environment.
+
+################################################
+
+ Agenda :
+           CI/CD and Jenkins and AWS (Amazon Web Services) and Smoke Test steps.
+
+ server - computer that is used to serve other computers
+
+ Environment - place where server is running application.
+ All environments have dummy data ( fake data) except production.
+
+ dev -> test -> stage -> production || in theory
+
+ dev-- used by developers only
+
+ test --- used for functional testing, used by us and non-functional testing like performance.
+
+ stage--- UAT (User Acceptance Testing)
+
+ production - the real application, used by end-users
+
+ There could be other environments, not every single company has only these 4
+
+ when new build is deployed to any environments, smoke test should automatically exected.
+
+ daily, smoke test is running on the test environment. If something happened with test environment,
+ we have a bloker. We cannot do our work. That's why
+ if test environment is down everybody should be aware of it asap.
+ That's why we run smoke test after new build (because new changes could broke something),
+ and periodically (every morning), because something could happened overnight that caused server problem.
+
+ after release, we do smoke test in production environment 100%
+
+ Continues Integration -- build + unit test + integration tests + code analysis
+
+ Continues Delivery -- Continues Integration + smoke testing + regression testing + performance testing
+ + deployment to Staging environment. Everything is automated except release
+
+ Continues Deployment -  Continues Delivery + automatic release
+
+ Most of the companies just stick with Continues Delivery, and prefer to trigger release manually.
+
+ ___________________________________________
+
+ Create AWS ACCOUNT http://aws.amazon.com/console
+
+ any role
+ any purpose
+ anything
+
+ AWS--Amazon Web Services, they provide different cloud serives, virtual mathines.....
+
+ make sure that you will on Northern Virginia region (after break)
+
+ To go to jenkins =>
+Select server - copy ip address - go to the browser - paste your ip address and add :
+8081 hit enter you will see Jenkins
+
+jenkins username and password is admin.
+
+enter into search box ip:8081 or ip:8080 to find jenkins
+
+default part for jenkins is 8080. In our case, it was switched to 8081
+
+web application -- any application used over the browser
+
+clean test -P Smoke
+
+clean test -Dcucumber.options="--tags @driver"
+
+
+Steps to create a smoke test job :
+
+  1. Go to dashboard -->new item --> Smoke test | freestyle project
+
+  2. Select git as a VCS and insert project URL :http://github.com/CybertekSchool/Fall2019OnlineCucumberSelenium.git
+
+  3.Build -->Invoke Top-level maven targets-->clean test--P Smoke or , if you don't have a profile,
+   use: clean test -Dcucumber.options="--tags @smoke_test"
+
+  4. Proceed to Post Build actions --> Select cucumber report
+
+  5. Click build now!!!
 
 
 
@@ -1883,7 +2009,6 @@ Provides Advance configuration -Makes configuration easier
 
 
 
-//        Regression testing ---it's type of functional testing that is performed before release. Regression suit includes all tests cases, so we are convering entire application.
 
 
 
@@ -1898,4 +2023,13 @@ Provides Advance configuration -Makes configuration easier
 
 
 
-//        */
+
+
+
+
+
+
+
+
+
+       */
